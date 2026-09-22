@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloomTeen Skincare — Kulit Sehat, Glowing, Tanpa Ribet ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Fredoka for playful headers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teen-pink': '#FFB3C6',
+                        'teen-pink-soft': '#FFF0F5',
+                        'teen-lavender': '#E8DFF5',
+                        'teen-lavender-dark': '#B892FF',
+                        'teen-cream': '#FFF9F2',
+                        'teen-blue': '#E0F4FF',
+                        'teen-mint': '#E8F8F5',
+                        'teen-coral': '#FF85A1',
+                        'teen-dark': '#3B2F35',
+                        'teen-muted': '#6E5D65'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Fredoka"', 'cursive', 'sans-serif']
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '2.5rem'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFF9F2;
+            color: #3B2F35;
+        }
+
+        .font-heading {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* Custom doodle and floating animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+        }
+
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: floatSlow 6s ease-in-out 2s infinite;
+        }
+
+        .animate-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hide scrollbars for slick look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased text-teen-dark selection:bg-teen-pink selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-teen-coral via-teen-pink to-teen-lavender-dark text-white text-xs md:text-sm font-medium py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
+        <span>✨ Sparkle Special: Free Stiker Sheet Lucu untuk Setiap Pembelian Starter Bundle! 🎁</span>
+        <button onclick="openQuizModal()" class="underline font-bold hover:opacity-90 transition">Cek Quiz Kulit</button>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-teen-cream/90 backdrop-blur-md border-b border-pink-100/60 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teen-coral to-teen-pink flex items-center justify-center text-white font-heading font-bold text-xl shadow-md group-hover:rotate-6 transition-transform">
+                    🌸
+                </div>
+                <span class="font-heading font-bold text-2xl tracking-wide bg-gradient-to-r from-teen-coral to-teen-lavender-dark bg-clip-text text-transparent">
+                    BloomTeen
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-teen-muted">
+                <a href="#problem" class="hover:text-teen-coral transition">Cerita Kulit</a>
+                <a href="#solution" class="hover:text-teen-coral transition">Solusi Simpel</a>
+                <a href="#benefits" class="hover:text-teen-coral transition">Manfaat</a>
+                <a href="#steps" class="hover:text-teen-coral transition">Cara Pakai</a>
+                <a href="#products" class="hover:text-teen-coral transition">Produk</a>
+                <a href="#faq" class="hover:text-teen-coral transition">FAQ</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-white border border-pink-100 shadow-sm hover:bg-teen-pink-soft text-teen-dark transition">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-teen-coral text-white text-[11px] font-bold flex items-center justify-center">0</span>
+                </button>
+                <button onclick="openQuizModal()" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teen-coral to-pink-400 text-white font-bold text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all">
+                    <span>✨ Quiz Rutinitas</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-white border border-pink-100 text-teen-dark">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+		
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-pink-100 px-6 py-4 space-y-3 font-medium text-teen-dark">
+            <a href="#problem" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">Cerita Kulit</a>
+            <a href="#solution" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">Solusi Simpel</a>
+            <a href="#benefits" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">Manfaat</a>
+            <a href="#steps" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">Cara Pakai</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">Produk</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-1 hover:text-teen-coral">FAQ</a>
+            <button onclick="openQuizModal(); toggleMobileMenu();" class="w-full text-center py-2.5 rounded-xl bg-teen-pink-soft text-teen-coral font-bold border border-pink-200">
+                ✨ Cek Quiz Kulit Remaja
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-8 pb-16 md:py-24 bg-gradient-to-b from-teen-cream via-teen-pink-soft/50 to-teen-cream">
+        <!-- Playful Background Doodles -->
+        <div class="absolute top-12 left-10 text-3xl opacity-40 animate-float">✨</div>
+        <div class="absolute bottom-16 left-1/4 text-4xl opacity-30 animate-float-delayed">🌸</div>
+        <div class="absolute top-24 right-12 text-3xl opacity-40 animate-float">☁️</div>
+        <div class="absolute bottom-8 right-1/3 text-3xl opacity-30 animate-float-delayed">💖</div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-pink-200 shadow-sm text-teen-coral font-bold text-xs uppercase tracking-wider">
+                        <span class="animate-pulse">💖</span> Skincare Khusus Kulit Remaja
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-teen-dark">
+                        Kulit Sehat, Glowing, <span class="bg-gradient-to-r from-teen-coral via-pink-400 to-teen-lavender-dark bg-clip-text text-transparent">Tanpa Ribet! ✨</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-teen-muted font-normal max-w-2xl leading-relaxed">
+                        Skincare simpel yang dirancang untuk kebutuhan kulit remaja. Ringan, nyaman digunakan setiap hari, dan siap menemani kamu tampil percaya diri tanpa takut kulit terasa berat.
+                    </p>
+					
+<!-- Ini adalah tanda keterangan untuk CTA 1 -->
+                    <!-- Dual CTAs -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <a href="#benefits" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-teen-coral to-pink-500 text-white font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all text-center">
+                            🛍️ Coba Sekarang
+                        </a>
+                        <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white border-2 border-pink-200 text-teen-dark font-bold text-base hover:bg-teen-pink-soft hover:border-pink-300 transition-all text-center">
+                            ✨ Lihat Produknya
+                        </a>
+                    </div>
+<!-- Ini adalah tanda keterangan untuk-->
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-6 flex items-center justify-center md:justify-start gap-6 text-xs text-teen-muted font-medium">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 100% BPOM Verified
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-pink-400"></span> Alcohol-Free
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-purple-400"></span> Non-Comedogenic
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Section -->
+                <div class="md:col-span-5 relative flex justify-center">
+                    <!-- Subtle Aura Glow -->
+                    <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-pink-300 via-purple-200 to-sky-200 blur-3xl opacity-60 animate-glow"></div>
+
+                    <!-- Main Product Card Illustration -->
+                    <div class="relative z-10 w-full max-w-md bg-white p-6 sm:p-8 rounded-5xl shadow-2xl border-4 border-white transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <!-- Floating Badge Top Left -->
+                        <div class="absolute -top-4 -left-4 bg-gradient-to-r from-amber-300 to-yellow-400 text-amber-950 font-heading font-bold text-xs px-4 py-2 rounded-2xl shadow-md rotate-[-6deg] flex items-center gap-1">
+                            ⭐ 4.9 Teen Favorite!
+                        </div>
+
+                        <!-- Mockup Image / SVG Skincare Graphic -->
+                        <div class="w-full h-72 sm:h-80 rounded-3xl bg-gradient-to-b from-teen-pink-soft via-purple-50 to-teen-blue flex flex-col items-center justify-center relative overflow-hidden group">
+                            
+                            <!-- Product Bottle Graphic -->
+                            <div class="relative z-10 w-36 h-52 bg-white/90 backdrop-blur rounded-3xl border-2 border-pink-200 shadow-xl flex flex-col items-center justify-between p-4 transform group-hover:scale-105 transition-transform duration-300">
+                                <div class="w-12 h-6 rounded-t-xl bg-teen-coral"></div>
+                                <div class="text-center my-auto">
+                                    <div class="text-2xl">🌸</div>
+                                    <div class="font-heading font-bold text-xs text-teen-coral mt-1">BloomTeen</div>
+                                    <div class="text-[10px] text-teen-muted font-medium">Daily Gel Cream</div>
+                                </div>
+                                <div class="w-full py-1 rounded-full bg-pink-100 text-[9px] text-center font-bold text-pink-600">
+                                    Hydrating ✨
+                                </div>
+                            </div>
+
+                            <!-- Decorative Doodles Inside Visual -->
+                            <div class="absolute top-6 left-6 text-xl animate-bounce">💧</div>
+                            <div class="absolute bottom-8 right-6 text-2xl">🍃</div>
+                            <div class="absolute top-10 right-8 text-xl">☀️</div>
+                        </div>
+
+                        <!-- Card Footer Info -->
+                        <div class="mt-6 flex items-center justify-between">
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-teen-dark">Bloom Routine Trio</h3>
+                                <p class="text-xs text-teen-muted">Cleanser + Serum + Sunscreen</p>
+                            </div>
+                            <span class="px-3 py-1.5 rounded-xl bg-teen-pink-soft text-teen-coral font-bold text-sm">
+                                Mild & Safe
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problem" class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-teen-coral font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-teen-pink-soft border border-pink-100">
+                    Cerita Kulit Remaja 💬
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-4 text-teen-dark">
+                    Sering Punya Masalah Kulit? <br class="hidden sm:block"/>Kamu Nggak Sendirian! 💖
+                </h2>
+                <p class="text-teen-muted text-sm sm:text-base mt-3">
+                    Perubahan hormon & aktivitas harian di sekolah sering bikin kondisi kulit berubah-ubah. Relate sama yang kamu alami?
+                </p>
+            </div>
+
+            <!-- Problem Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                
+                <!-- Problem Item 1 -->
+                <div class="p-5 rounded-3xl bg-teen-cream border border-amber-100 hover:border-amber-300 transition-all hover:-translate-y-1 shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-2xl flex items-center justify-center mb-4">
+                        😣
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-teen-dark mb-1">Mudah Berminyak</h3>
+                    <p class="text-xs text-teen-muted leading-relaxed">
+                        Baru beberapa jam di sekolah, area T-zone udah kilap berlebih.
+                    </p>
+                </div>
+
+                <!-- Problem Item 2 -->
+                <div class="p-5 rounded-3xl bg-teen-pink-soft/60 border border-pink-100 hover:border-pink-300 transition-all hover:-translate-y-1 shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-100 text-2xl flex items-center justify-center mb-4">
+                        🔴
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-teen-dark mb-1">Jerawat & Bruntusan</h3>
+                    <p class="text-xs text-teen-muted leading-relaxed">
+                        Suka tiba-tiba muncul di dahi atau pipi sebelum acara penting.
+                    </p>
+                </div>
+
+                <!-- Problem Item 3 -->
+                <div class="p-5 rounded-3xl bg-purple-50 border border-purple-100 hover:border-purple-300 transition-all hover:-translate-y-1 shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 text-2xl flex items-center justify-center mb-4">
+                        😴
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-teen-dark mb-1">Kulit Kusam</h3>
+                    <p class="text-xs text-teen-muted leading-relaxed">
+                        Kena panas matahari & debu bikin muka kelihatan lesu & letih.
+                    </p>
+                </div>
+
+                <!-- Problem Item 4 -->
+                <div class="p-5 rounded-3xl bg-sky-50 border border-sky-100 hover:border-sky-300 transition-all hover:-translate-y-1 shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-2xl flex items-center justify-center mb-4">
+                        🌡️
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-teen-dark mb-1">Terasa Kering/Tarik</h3>
+                    <p class="text-xs text-teen-muted leading-relaxed">
+                        Kulit terasa perih atau ketarik setelah pakai sabun cuci muka biasa.
+                    </p>
+                </div>
+
+                <!-- Problem Item 5 -->
+                <div class="p-5 rounded-3xl bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all hover:-translate-y-1 shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-2xl flex items-center justify-center mb-4">
+                        💦
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-teen-dark mb-1">Bingung Skincare</h3>
+                    <p class="text-xs text-teen-muted leading-relaxed">
+                        Banyak pilihan step rumit yang malah bikin kulit kaget & makin iritasi.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Empathy Closing Banner -->
+            <div class="mt-12 p-8 rounded-4xl bg-gradient-to-r from-teen-pink-soft via-teen-lavender to-teen-blue text-center relative overflow-hidden shadow-inner">
+                <div class="relative z-10 max-w-2xl mx-auto space-y-3">
+                    <span class="text-2xl">💡</span>
+                    <h3 class="font-heading font-bold text-xl sm:text-2xl text-teen-dark">
+                        Gak perlu stress! Kulit remaja butuh perlakuan lembut.
+                    </h3>
+                    <p class="text-sm text-teen-muted">
+                        Saatnya mulai merawat kulit dengan rutinitas yang <span class="font-bold text-teen-coral">simple, nyaman, dan sesuai kebutuhan kulitmu.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section id="solution" class="py-16 md:py-20 bg-teen-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-5xl p-8 sm:p-12 md:p-16 border border-pink-100 shadow-xl grid md:grid-cols-2 gap-10 items-center">
+                
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-teen-mint text-emerald-700 font-bold text-xs uppercase tracking-wider">
+                        Solusi Praktis 🌱
+                    </span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-teen-dark mt-4 leading-snug">
+                        Kenalan dengan Skincare yang Simpel untuk Kamu 💕
+                    </h2>
+                    <p class="text-teen-muted text-base mt-4 leading-relaxed">
+                        Nggak perlu rutinitas skincare yang panjang sampai 10 langkah. Fokus pada perawatan dasar yang membantu menjaga kulit tetap bersih, lembap, dan terasa nyaman sepanjang hari.
+                    </p>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-pink-100 text-teen-coral font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                ✓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-teen-dark">Formulasi pH Balanced</h4>
+                                <p class="text-xs text-teen-muted">Tidak merusak skin barrier alami remaja yang masih sensitif.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                ✓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-teen-dark">Bahan Alam Pilihan</h4>
+                                <p class="text-xs text-teen-muted">Mengandung Centella, Chamomile, dan Hyaluronate yang soothing.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-sky-600 font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                                ✓
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-teen-dark">Tekstur Water-Gel Ringan</h4>
+                                <p class="text-xs text-teen-muted">Cepat meresap, gak lengket, dan gak bikin wajah kayak kilap minyak.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <button onclick="openQuizModal()" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-teen-coral to-pink-500 text-white font-bold text-sm shadow-md hover:scale-105 transition-transform">
+                            💖 Temukan Rutinitasmu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Graphic Showcase -->
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-md h-80 sm:h-96 rounded-4xl bg-gradient-to-tr from-pink-100 via-purple-100 to-sky-100 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-teen-dark">
+                                ✨ 3 Basic Steps
+                            </span>
+                            <span class="text-xl">🌸</span>
+                        </div>
+
+                        <!-- Illustrated Step Badges Inside Graphic -->
+                        <div class="space-y-3 z-10">
+                            <div class="bg-white/90 backdrop-blur p-3 rounded-2xl flex items-center gap-3 shadow-sm transform -rotate-1">
+                                <span class="w-8 h-8 rounded-xl bg-pink-100 text-lg flex items-center justify-center">🫧</span>
+                                <div>
+                                    <div class="font-bold text-xs text-teen-dark">1. Cleanse</div>
+                                    <div class="text-[10px] text-teen-muted">Angkat kotoran tanpa bikin kering</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/90 backdrop-blur p-3 rounded-2xl flex items-center gap-3 shadow-sm transform rotate-1">
+                                <span class="w-8 h-8 rounded-xl bg-purple-100 text-lg flex items-center justify-center">💧</span>
+                                <div>
+                                    <div class="font-bold text-xs text-teen-dark">2. Hydrate & Treat</div>
+                                    <div class="text-[10px] text-teen-muted">Beri kelembapan & meredakan bruntusan</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/90 backdrop-blur p-3 rounded-2xl flex items-center gap-3 shadow-sm transform -rotate-1">
+                                <span class="w-8 h-8 rounded-xl bg-amber-100 text-lg flex items-center justify-center">☀️</span>
+                                <div>
+                                    <div class="font-bold text-xs text-teen-dark">3. Protect</div>
+                                    <div class="text-[10px] text-teen-muted">Lindungi dari UV saat sekolah/main</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-xs font-bold text-teen-muted">
+                            Langkah sederhana, hasil optimal! ✨
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT BENEFITS SECTION -->
+    <section id="benefits" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 font-bold text-xs uppercase tracking-wider">
+                    Alasan Suka BloomTeen ✨
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-4 text-teen-dark">
+                    Kenapa Remaja Suka Produk Ini?
+                </h2>
+                <p class="text-teen-muted text-sm sm:text-base mt-2">
+                    Dirancang cermat sesuai ritme harian anak sekolah & mahasiswa muda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- Benefit 1 -->
+                <div class="p-6 rounded-4xl bg-teen-pink-soft/50 border border-pink-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-pink-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        💧
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Melembapkan</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Membantu menjaga kelembapan kulit secara alami sepanjang hari tanpa terasa lengket.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-6 rounded-4xl bg-purple-50/60 border border-purple-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-purple-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        🌿
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Terasa Ringan</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Formulasi super ringan, sangat nyaman digunakan dalam aktivitas sehari-hari di luar ruangan.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-6 rounded-4xl bg-amber-50/60 border border-amber-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-amber-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        🫧
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Simple & Praktis</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Mudah dimasukkan ke dalam rutinitas harian tanpa menyita waktu istirahatmu.
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="p-6 rounded-4xl bg-sky-50/60 border border-sky-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-sky-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        ☀️
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Daily Care</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Formula lembut yang aman & cocok untuk perawatan harian secara konsisten.
+                    </p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="p-6 rounded-4xl bg-emerald-50/60 border border-emerald-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-emerald-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        💕
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Teen Friendly</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Dirancang khusus menyesuaikan kebutuhan kulit remaja yang dinamis & aktif.
+                    </p>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="p-6 rounded-4xl bg-rose-50/60 border border-rose-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                    <div class="w-14 h-14 rounded-3xl bg-white border border-rose-200 text-2xl flex items-center justify-center shadow-sm mb-5 group-hover:scale-110 transition-transform">
+                        ✨
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Fresh Look</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Membantu kulit tampak lebih fresh, sehat alami, dan siap menebar senyum pede.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section id="steps" class="py-16 md:py-24 bg-gradient-to-b from-white via-teen-cream to-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="px-3 py-1 rounded-full bg-pink-100 text-teen-coral font-bold text-xs uppercase tracking-wider">
+                    Langkah Mudah 🐾
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-4 text-teen-dark">
+                    3 Langkah Menuju Rutinitas Kulit yang Lebih Terawat ✨
+                </h2>
+                <p class="text-teen-muted text-sm sm:text-base mt-2">
+                    Cuma 3 menit setiap pagi dan malam hari!
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                
+                <!-- Connector Line for Desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-pink-200 via-purple-200 to-amber-200 transform -translate-y-1/2 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 bg-white p-8 rounded-4xl border border-pink-100 shadow-md text-center hover:-translate-y-2 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-teen-coral text-white font-heading font-bold text-lg flex items-center justify-center mb-6 shadow-md">
+                        01
+                    </div>
+                    <div class="text-4xl mb-3">🫧</div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Cleanse</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Bersihkan wajah dari kotoran, debu, dan sisa minyak secara lembut tanpa rasa tertarik.
+                    </p>
+                    <div class="mt-4 inline-block px-3 py-1 rounded-full bg-pink-50 text-pink-600 text-xs font-semibold">
+                        Pagi & Malam
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 bg-white p-8 rounded-4xl border border-purple-100 shadow-md text-center hover:-translate-y-2 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-teen-lavender-dark text-white font-heading font-bold text-lg flex items-center justify-center mb-6 shadow-md">
+                        02
+                    </div>
+                    <div class="text-4xl mb-3">💧</div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Treat & Hydrate</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Gunakan serum ringan sesuai kebutuhan kulit untuk menjaga hidrasi & menenangkan kulit.
+                    </p>
+                    <div class="mt-4 inline-block px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-semibold">
+                        Pagi & Malam
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 bg-white p-8 rounded-4xl border border-amber-100 shadow-md text-center hover:-translate-y-2 transition-transform">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-amber-400 text-white font-heading font-bold text-lg flex items-center justify-center mb-6 shadow-md">
+                        03
+                    </div>
+                    <div class="text-4xl mb-3">☀️</div>
+                    <h3 class="font-heading font-bold text-xl text-teen-dark mb-2">Protect</h3>
+                    <p class="text-sm text-teen-muted leading-relaxed">
+                        Gunakan sunscreen pada pagi/siang hari untuk melindungi kulit dari paparan sinar UV matahari.
+                    </p>
+                    <div class="mt-4 inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold">
+                        Pagi & Siang Hari
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Below Steps -->
+            <div class="mt-14 text-center">
+                <a href="#products" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teen-coral via-pink-400 to-teen-lavender-dark text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    🚀 Mulai Rutinitasmu
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE SECTION -->
+    <section id="products" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-teen-pink-soft text-teen-coral font-bold text-xs uppercase tracking-wider">
+                        Koleksi Skincare 🌷
+                    </span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-3 text-teen-dark">
+                        Pilih Teman Skincare-mu 🌷
+                    </h2>
+                </div>
+                <p class="text-teen-muted text-sm max-w-md mt-2 md:mt-0">
+                    Semua produk diformulasikan lembut, bebas bahan keras, & ramah kantong pelajar!
+                </p>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Product 1 -->
+                <div class="bg-teen-cream/60 rounded-4xl p-6 border border-pink-100 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div>
+                        <!-- Product Visual Container -->
+                        <div class="h-60 rounded-3xl bg-gradient-to-b from-pink-100/70 to-white flex items-center justify-center relative overflow-hidden mb-6">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[11px] font-bold text-teen-coral shadow-sm">
+                                Step 01 🫧
+                            </span>
+                            <div class="w-28 h-40 bg-white rounded-2xl border border-pink-200 shadow-md flex flex-col items-center justify-center p-3 group-hover:scale-105 transition-transform">
+                                <span class="text-3xl mb-1">🫧</span>
+                                <span class="font-heading font-bold text-xs text-center text-teen-dark">Daily Cleanser</span>
+                                <span class="text-[9px] text-teen-muted">Gentle Foam</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-heading font-bold text-xl text-teen-dark">Daily Cleanser</h3>
+                        <p class="text-xs text-teen-muted mt-1 leading-relaxed">
+                            "Bersihkan wajah dari debu & minyak berlebih dengan langkah sederhana tanpa bikin kulit ketarik."
+                        </p>
+                        
+                        <div class="mt-4 flex flex-wrap gap-1.5">
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-pink-100 text-teen-muted">Non-Drying</span>
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-pink-100 text-teen-muted">pH 5.5</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-pink-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-teen-muted line-through">Rp 59.000</span>
+                            <div class="font-heading font-bold text-lg text-teen-coral">Rp 49.000</div>
+                        </div>
+                        <button onclick="addToCart('Daily Cleanser', 49000, '🫧')" class="px-5 py-2.5 rounded-2xl bg-teen-coral hover:bg-pink-600 text-white font-bold text-xs shadow-md transition-all active:scale-95">
+                            + Tambah Bag
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-teen-cream/60 rounded-4xl p-6 border border-purple-100 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div>
+                        <!-- Product Visual Container -->
+                        <div class="h-60 rounded-3xl bg-gradient-to-b from-purple-100/70 to-white flex items-center justify-center relative overflow-hidden mb-6">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[11px] font-bold text-purple-600 shadow-sm">
+                                Step 02 💧
+                            </span>
+                            <div class="w-28 h-40 bg-white rounded-2xl border border-purple-200 shadow-md flex flex-col items-center justify-center p-3 group-hover:scale-105 transition-transform">
+                                <span class="text-3xl mb-1">💧</span>
+                                <span class="font-heading font-bold text-xs text-center text-teen-dark">Hydrating Serum</span>
+                                <span class="text-[9px] text-teen-muted">Calming Gel</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-heading font-bold text-xl text-teen-dark">Hydrating Serum</h3>
+                        <p class="text-xs text-teen-muted mt-1 leading-relaxed">
+                            "Tambahkan kelembapan ekstra dalam rutinitasmu untuk bantu redakan bruntusan & kemerahan."
+                        </p>
+                        
+                        <div class="mt-4 flex flex-wrap gap-1.5">
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-purple-100 text-teen-muted">Centella Extract</span>
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-purple-100 text-teen-muted">Hyalu-B5</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-purple-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-teen-muted line-through">Rp 69.000</span>
+                            <div class="font-heading font-bold text-lg text-teen-lavender-dark">Rp 59.000</div>
+                        </div>
+                        <button onclick="addToCart('Hydrating Serum', 59000, '💧')" class="px-5 py-2.5 rounded-2xl bg-teen-lavender-dark hover:bg-purple-600 text-white font-bold text-xs shadow-md transition-all active:scale-95">
+                            + Tambah Bag
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-teen-cream/60 rounded-4xl p-6 border border-amber-100 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div>
+                        <!-- Product Visual Container -->
+                        <div class="h-60 rounded-3xl bg-gradient-to-b from-amber-100/70 to-white flex items-center justify-center relative overflow-hidden mb-6">
+                            <span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[11px] font-bold text-amber-600 shadow-sm">
+                                Step 03 ☀️
+                            </span>
+                            <div class="w-28 h-40 bg-white rounded-2xl border border-amber-200 shadow-md flex flex-col items-center justify-center p-3 group-hover:scale-105 transition-transform">
+                                <span class="text-3xl mb-1">☀️</span>
+                                <span class="font-heading font-bold text-xs text-center text-teen-dark">Daily Sunscreen</span>
+                                <span class="text-[9px] text-teen-muted">SPF 35 PA+++</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-heading font-bold text-xl text-teen-dark">Daily Sunscreen</h3>
+                        <p class="text-xs text-teen-muted mt-1 leading-relaxed">
+                            "Lindungi kulit sebelum beraktivitas. No white-cast, cepat meresap, & nyaman di bawah panas matahari."
+                        </p>
+                        
+                        <div class="mt-4 flex flex-wrap gap-1.5">
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-amber-100 text-teen-muted">SPF 35 PA+++</span>
+                            <span class="text-[10px] font-semibold bg-white px-2.5 py-1 rounded-lg border border-amber-100 text-teen-muted">No White Cast</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-amber-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-teen-muted line-through">Rp 65.000</span>
+                            <div class="font-heading font-bold text-lg text-amber-500">Rp 55.000</div>
+                        </div>
+                        <button onclick="addToCart('Daily Sunscreen', 55000, '☀️')" class="px-5 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-500 text-white font-bold text-xs shadow-md transition-all active:scale-95">
+                            + Tambah Bag
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TESTIMONIALS SECTION -->
+    <section class="py-16 md:py-24 bg-gradient-to-b from-white to-teen-pink-soft/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="px-3 py-1 rounded-full bg-pink-100 text-teen-coral font-bold text-xs uppercase tracking-wider">
+                    Cerita Pengguna 💕
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-4 text-teen-dark">
+                    Mereka Sudah Coba, Kamu Kapan? 💕
+                </h2>
+                <p class="text-teen-muted text-sm sm:text-base mt-2">
+                    Dengarkan langsung pengalamannya dari sesama teman remaja!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-7 rounded-4xl border border-pink-100 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-amber-400 text-sm mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="text-sm text-teen-dark italic leading-relaxed">
+                            “Teksturnya ringan dan enak banget dipakai sebelum berangkat sekolah! Nggak bikin muka kelihatan kaya kilap minyak waktu jam istirahat.”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center font-bold text-pink-700">
+                            A
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-teen-dark">Alya</h4>
+                            <span class="text-xs text-teen-muted">16 tahun — Siswa SMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-7 rounded-4xl border border-purple-100 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-amber-400 text-sm mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="text-sm text-teen-dark italic leading-relaxed">
+                            “Aku suka karena step-nya simpel. Nggak bikin rutinitas skincare terasa ribet pas lagi capek pulang sekolah atau les malam.”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center font-bold text-purple-700">
+                            N
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-teen-dark">Naya</h4>
+                            <span class="text-xs text-teen-muted">17 tahun — Siswa SMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-7 rounded-4xl border border-sky-100 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-transform">
+                    <div>
+                        <div class="text-amber-400 text-sm mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="text-sm text-teen-dark italic leading-relaxed">
+                            “Sunscreen-nya beneran gak ada whitecast-nya dan serumnya cepat banget meresap. Bruntusan di dahi mendingan banget!”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sky-200 flex items-center justify-center font-bold text-sky-700">
+                            K
+                        </div>
+                        <div>
+                            <h4 class="font-heading font-bold text-sm text-teen-dark">Keisha</h4>
+                            <span class="text-xs text-teen-muted">15 tahun — Siswa SMP</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rating Stats Banner -->
+            <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-center text-xs sm:text-sm font-semibold text-teen-muted">
+                <div class="flex items-center gap-2">
+                    <span class="font-heading font-bold text-2xl text-teen-coral">4.9/5</span>
+                    <span>Rating Kepuasan</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-pink-300 hidden sm:block"></div>
+                <div class="flex items-center gap-2">
+                    <span class="font-heading font-bold text-2xl text-teen-dark">15,000+</span>
+                    <span>Remaja Sudah Coba</span>
+                </div>
+                <div class="w-1.5 h-1.5 rounded-full bg-pink-300 hidden sm:block"></div>
+                <div class="flex items-center gap-2">
+                    <span class="font-heading font-bold text-2xl text-emerald-600">100%</span>
+                    <span>Formulasi BPOM</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROMO SECTION -->
+    <section class="py-16 md:py-20 bg-teen-cream relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-teen-coral via-pink-400 to-teen-lavender-dark rounded-5xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                
+                <!-- Decorative Circles -->
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-white/10 blur-xl"></div>
+                <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-white/10 blur-lg"></div>
+
+                <div class="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur text-xs font-bold uppercase tracking-wider">
+                            🎁 Special Teen Bundle
+                        </span>
+                        
+                        <h2 class="font-heading text-3xl sm:text-5xl font-bold leading-tight">
+                            Starter Skincare Set untuk Kamu 💗
+                        </h2>
+
+                        <p class="text-sm sm:text-base text-white/90 max-w-xl leading-relaxed">
+                            Mau mulai skincare tapi bingung harus dari mana? Dapatkan paket basic (Cleanser + Serum + Sunscreen) untuk memulai rutinitas perawatan kulitmu dengan hemat!
+                        </p>
+
+                        <!-- Urgency Tag -->
+                        <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                            <span class="bg-amber-300 text-amber-950 font-heading font-bold text-xs px-3 py-1.5 rounded-xl shadow-sm">
+                                ⏰ Promo Terbatas Sampai Akhir Bulan Ini!
+                            </span>
+                            <span class="text-xs font-medium text-white/90">
+                                Bonus Pouch Transparan & Stickers ✨
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 text-center">
+                        <div class="bg-white text-teen-dark p-6 sm:p-8 rounded-4xl shadow-xl space-y-4">
+                            <div class="text-xs font-bold text-teen-muted">Starter Glow Trio Bundle</div>
+                            <div class="flex items-center justify-center gap-2">
+                                <span class="text-sm text-teen-muted line-through">Rp 173.000</span>
+                                <span class="font-heading font-bold text-3xl text-teen-coral">Rp 139.000</span>
+                            </div>
+                            <button onclick="addToCart('Starter Glow Trio Bundle', 139000, '🎁')" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teen-coral to-pink-500 text-white font-bold text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all">
+                                🎁 Ambil Starter Bundle
+                            </button>
+                            <p class="text-[11px] text-teen-muted">Free Ongkir Seluruh Indonesia*</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 font-bold text-xs uppercase tracking-wider">
+                    Tanya Jawab 🤔
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold mt-4 text-teen-dark">
+                    Masih Bingung? Yuk, Cek Dulu 👀
+                </h2>
+                <p class="text-teen-muted text-sm sm:text-base mt-2">
+                    Jawaban untuk pertanyaan paling sering ditanyakan seputar skincare remaja.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border border-pink-100 rounded-3xl overflow-hidden shadow-sm transition-all">
+                    <button onclick="toggleFaq('faq-1')" class="w-full p-6 text-left font-heading font-bold text-base sm:text-lg text-teen-dark flex justify-between items-center bg-teen-cream/30 hover:bg-teen-pink-soft/40 transition">
+                        <span>Q: Apakah produk ini cocok untuk remaja?</span>
+                        <i id="faq-1-icon" class="fa-solid fa-chevron-down text-teen-coral text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="hidden p-6 pt-2 text-sm text-teen-muted leading-relaxed bg-white">
+                        A: Ya! Produk kami dirancang khusus dan disesuaikan dengan kebutuhan perawatan kulit remaja usia 12–19 tahun untuk penggunaan sehari-hari secara aman dan lembut.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-pink-100 rounded-3xl overflow-hidden shadow-sm transition-all">
+                    <button onclick="toggleFaq('faq-2')" class="w-full p-6 text-left font-heading font-bold text-base sm:text-lg text-teen-dark flex justify-between items-center bg-teen-cream/30 hover:bg-teen-pink-soft/40 transition">
+                        <span>Q: Kapan sebaiknya mulai skincare?</span>
+                        <i id="faq-2-icon" class="fa-solid fa-chevron-down text-teen-coral text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="hidden p-6 pt-2 text-sm text-teen-muted leading-relaxed bg-white">
+                        A: Kamu bisa mulai sejak usia remaja saat aktivitas harian makin banyak. Mulailah dari rutinitas dasar yang sederhana (cleanser, moisturizer/serum, sunscreen) secara konsisten.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-pink-100 rounded-3xl overflow-hidden shadow-sm transition-all">
+                    <button onclick="toggleFaq('faq-3')" class="w-full p-6 text-left font-heading font-bold text-base sm:text-lg text-teen-dark flex justify-between items-center bg-teen-cream/30 hover:bg-teen-pink-soft/40 transition">
+                        <span>Q: Apakah semua produk harus digunakan sekaligus?</span>
+                        <i id="faq-3-icon" class="fa-solid fa-chevron-down text-teen-coral text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="hidden p-6 pt-2 text-sm text-teen-muted leading-relaxed bg-white">
+                        A: Tidak harus sekaligus. Kamu bisa menyesuaikan produk dengan kebutuhan kulit dan rutinitasmu. Jika baru pertama kali, mulailah secara perlahan agar kulit dapat beradaptasi.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-pink-100 rounded-3xl overflow-hidden shadow-sm transition-all">
+                    <button onclick="toggleFaq('faq-4')" class="w-full p-6 text-left font-heading font-bold text-base sm:text-lg text-teen-dark flex justify-between items-center bg-teen-cream/30 hover:bg-teen-pink-soft/40 transition">
+                        <span>Q: Bagaimana memilih produk yang sesuai?</span>
+                        <i id="faq-4-icon" class="fa-solid fa-chevron-down text-teen-coral text-sm transition-transform"></i>
+                    </button>
+                    <div id="faq-4" class="hidden p-6 pt-2 text-sm text-teen-muted leading-relaxed bg-white">
+                        A: Kenali kondisi dan kebutuhan kulit terlebih dahulu (apakah cenderung berminyak, kering, atau sensitif). Kamu juga bisa mencoba Quiz Kulit di website ini! Jika memiliki masalah kulit menetap atau berat, disarankan berkonsultasi dengan dokter kulit.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="py-20 md:py-28 bg-gradient-to-b from-teen-cream via-teen-pink-soft to-teen-lavender/40 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <span class="text-4xl inline-block mb-3 animate-bounce">💖</span>
+            
+            <h2 class="font-heading text-4xl sm:text-5xl font-bold text-teen-dark leading-tight">
+                Ready to Love Your Skin? 💖
+            </h2>
+
+            <p class="text-base sm:text-lg text-teen-muted mt-4 max-w-xl mx-auto leading-relaxed">
+                Mulai dari langkah kecil. Bangun rutinitas skincare yang simpel dan jadikan merawat kulit sebagai bagian dari self-care kamu setiap hari.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openQuizModal()" class="w-full sm:w-auto px-9 py-4 rounded-full bg-gradient-to-r from-teen-coral to-pink-500 text-white font-bold text-base shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+                    ✨ MULAI SKINCARE SEKARANG
+                </button>
+                <a href="#products" class="w-full sm:w-auto px-9 py-4 rounded-full bg-white border-2 border-pink-200 text-teen-dark font-bold text-base hover:bg-white/80 transition-all">
+                    🛍️ BELANJA PRODUK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-pink-100 pt-16 pb-12 text-teen-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+                
+                <!-- Brand Bio -->
+                <div class="md:col-span-5 space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-teen-coral to-teen-pink flex items-center justify-center text-white font-heading font-bold text-lg">
+                            🌸
+                        </div>
+                        <span class="font-heading font-bold text-2xl bg-gradient-to-r from-teen-coral to-teen-lavender-dark bg-clip-text text-transparent">
+                            BloomTeen
+                        </span>
+                    </a>
+                    <p class="text-sm text-teen-muted max-w-sm leading-relaxed">
+                        Skincare ramah remaja untuk perawatan harian yang simpel, nyaman, dan bikin kamu lebih pede setiap hari.
+                    </p>
+                    <p class="font-heading font-bold text-teen-coral text-sm pt-2">
+                        “Simple routine. Fresh skin. More confidence. ✨”
+                    </p>
+                </div>
+
+                <!-- Navigation Columns -->
+                <div class="md:col-span-2">
+                    <h4 class="font-heading font-bold text-sm text-teen-dark mb-4">Navigasi</h4>
+                    <ul class="space-y-2.5 text-xs text-teen-muted font-medium">
+                        <li><a href="#problem" class="hover:text-teen-coral transition">Cerita Kulit</a></li>
+                        <li><a href="#solution" class="hover:text-teen-coral transition">Solusi Simpel</a></li>
+                        <li><a href="#benefits" class="hover:text-teen-coral transition">Manfaat</a></li>
+                        <li><a href="#products" class="hover:text-teen-coral transition">Produk Kami</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h4 class="font-heading font-bold text-sm text-teen-dark mb-4">Bantuan</h4>
+                    <ul class="space-y-2.5 text-xs text-teen-muted font-medium">
+                        <li><a href="#faq" class="hover:text-teen-coral transition">FAQ</a></li>
+                        <li><a href="#" onclick="openQuizModal(); return false;" class="hover:text-teen-coral transition">Quiz Skin Check</a></li>
+                        <li><a href="#" class="hover:text-teen-coral transition">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-teen-coral transition">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3">
+                    <h4 class="font-heading font-bold text-sm text-teen-dark mb-4">Ikuti Kami 📲</h4>
+                    <p class="text-xs text-teen-muted mb-4">Dapatkan tips skincare harian & info giveaway di media sosial kami!</p>
+                    <div class="flex items-center gap-3 text-lg">
+                        <a href="#" class="w-9 h-9 rounded-full bg-teen-pink-soft text-teen-coral flex items-center justify-center hover:bg-teen-coral hover:text-white transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-teen-pink-soft text-teen-coral flex items-center justify-center hover:bg-teen-coral hover:text-white transition">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-teen-pink-soft text-teen-coral flex items-center justify-center hover:bg-teen-coral hover:text-white transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-pink-50 text-center text-xs text-teen-muted font-medium">
+                © 2026 BloomTeen Skincare. All rights reserved. Dirancang dengan 💖 untuk kulit remaja Indonesia.
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE CART DRAWER MODAL -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden transition-opacity">
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between z-10">
+            <div>
+                <div class="flex items-center justify-between border-b border-pink-100 pb-4">
+                    <h3 class="font-heading font-bold text-xl text-teen-dark flex items-center gap-2">
+                        🛍️ Keranjang Kamu
+                    </h3>
+                    <button onclick="toggleCartDrawer()" class="p-2 rounded-xl text-teen-muted hover:bg-pink-50">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <div id="empty-cart-msg" class="text-center py-12 text-teen-muted">
+                        <span class="text-4xl block mb-2">🛍️</span>
+                        <p class="text-sm font-medium">Keranjang kamu masih kosong.</p>
+                        <p class="text-xs text-gray-400 mt-1">Pilih produk favoritmu sekarang!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cart-footer" class="border-t border-pink-100 pt-4 space-y-4 hidden">
+                <div class="flex justify-between items-center text-sm font-bold text-teen-dark">
+                    <span>Total Estimasi:</span>
+                    <span id="cart-total" class="text-teen-coral text-lg font-heading">Rp 0</span>
+                </div>
+                <button onclick="openCheckoutPage()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-teen-coral to-pink-500 text-white font-bold text-sm shadow-md hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <span>🚀 Lanjut ke Checkout</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULL-SCREEN CHECKOUT PAGE OVERLAY -->
+    <div id="checkout-page" class="fixed inset-0 z-50 hidden bg-teen-cream overflow-y-auto">
+        <!-- Checkout Header -->
+        <header class="sticky top-0 z-40 bg-white border-b border-pink-100/80 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <button onclick="closeCheckoutPage()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teen-pink-soft text-teen-dark font-bold text-xs hover:bg-pink-100 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Kembali Belanja</span>
+                </button>
+
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-teen-coral to-teen-pink flex items-center justify-center text-white font-heading font-bold text-sm">
+                        🌸
+                    </div>
+                    <span class="font-heading font-bold text-xl bg-gradient-to-r from-teen-coral to-teen-lavender-dark bg-clip-text text-transparent">
+                        BloomTeen Checkout
+                    </span>
+                </a>
+
+                <div class="hidden sm:flex items-center gap-2 text-xs font-bold text-teen-muted">
+                    <span class="text-teen-coral">1. Keranjang</span>
+                    <span>➔</span>
+                    <span class="text-teen-coral">2. Pengiriman</span>
+                    <span>➔</span>
+                    <span>3. Selesai</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Checkout Content Grid -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <form id="checkout-form" onsubmit="processCheckout(event)">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left Column: Customer Info & Options -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- Step 1: Data Pemesan -->
+                        <div class="bg-white p-6 sm:p-8 rounded-4xl border border-pink-100 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3 border-b border-pink-50 pb-4">
+                                <div class="w-8 h-8 rounded-full bg-teen-pink-soft text-teen-coral font-heading font-bold flex items-center justify-center text-sm">
+                                    1
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-lg text-teen-dark">Informasi Pemesan</h3>
+                                    <p class="text-xs text-teen-muted">Untuk konfirmasi pengiriman & resi otomatis</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                <div>
+                                    <label class="block text-xs font-bold text-teen-dark mb-1.5">Nama Lengkap *</label>
+                                    <input type="text" id="cust-name" required placeholder="Contoh: Alya Rahma" class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-teen-dark mb-1.5">Nomor WhatsApp *</label>
+                                    <input type="tel" id="cust-phone" required placeholder="0812xxxxxxx" class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-teen-dark mb-1.5">Email (Opsional)</label>
+                                <input type="email" id="cust-email" placeholder="nama@email.com" class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition">
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Alamat Pengiriman -->
+                        <div class="bg-white p-6 sm:p-8 rounded-4xl border border-pink-100 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3 border-b border-pink-50 pb-4">
+                                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-heading font-bold flex items-center justify-center text-sm">
+                                    2
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-lg text-teen-dark">Alamat Pengiriman</h3>
+                                    <p class="text-xs text-teen-muted">Pastikan alamat rumah/sekolah terisi lengkap</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                <div>
+                                    <label class="block text-xs font-bold text-teen-dark mb-1.5">Provinsi *</label>
+                                    <select id="cust-province" required class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition">
+                                        <option value="">-- Pilih Provinsi --</option>
+                                        <option value="DKI Jakarta">DKI Jakarta</option>
+                                        <option value="Jawa Barat">Jawa Barat</option>
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="DI Yogyakarta">DI Yogyakarta</option>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="Banten">Banten</option>
+                                        <option value="Luar Jawa">Luar Jawa</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-teen-dark mb-1.5">Kota / Kabupaten *</label>
+                                    <input type="text" id="cust-city" required placeholder="Contoh: Jakarta Selatan" class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-teen-dark mb-1.5">Alamat Lengkap & Patokan *</label>
+                                <textarea id="cust-address" required rows="3" placeholder="Jl. Mawar No. 12, RT 02/RW 05, Depan Pos Satpam Komplek..." class="w-full px-4 py-3 rounded-2xl bg-teen-cream/50 border border-pink-100 text-xs text-teen-dark focus:outline-none focus:border-teen-coral transition"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-teen-dark mb-1.5">Opsi Kurir Pengiriman</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <label class="p-3.5 rounded-2xl border-2 border-pink-200 bg-teen-pink-soft/30 cursor-pointer flex flex-col justify-between hover:border-teen-coral transition">
+                                        <div class="flex items-center justify-between">
+                                            <input type="radio" name="shipping-option" value="10000" checked onclick="updateCheckoutTotals()" class="accent-teen-coral">
+                                            <span class="text-[10px] font-bold bg-white px-2 py-0.5 rounded-full text-teen-coral">Reguler</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="font-bold text-xs text-teen-dark">JNE / J&T / SiCepat</div>
+                                            <div class="text-[10px] text-teen-muted">2 - 4 hari (Rp 10.000)</div>
+                                        </div>
+                                    </label>
+
+                                    <label class="p-3.5 rounded-2xl border border-pink-100 bg-white cursor-pointer flex flex-col justify-between hover:border-teen-coral transition">
+                                        <div class="flex items-center justify-between">
+                                            <input type="radio" name="shipping-option" value="20000" onclick="updateCheckoutTotals()" class="accent-teen-coral">
+                                            <span class="text-[10px] font-bold bg-purple-100 px-2 py-0.5 rounded-full text-purple-600">Kilat</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="font-bold text-xs text-teen-dark">Express Next-Day</div>
+                                            <div class="text-[10px] text-teen-muted">1 - 2 hari (Rp 20.000)</div>
+                                        </div>
+                                    </label>
+
+                                    <label class="p-3.5 rounded-2xl border border-pink-100 bg-white cursor-pointer flex flex-col justify-between hover:border-teen-coral transition">
+                                        <div class="flex items-center justify-between">
+                                            <input type="radio" name="shipping-option" value="30000" onclick="updateCheckoutTotals()" class="accent-teen-coral">
+                                            <span class="text-[10px] font-bold bg-amber-100 px-2 py-0.5 rounded-full text-amber-600">Instant</span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="font-bold text-xs text-teen-dark">Gojek / Grab</div>
+                                            <div class="text-[10px] text-teen-muted">Sampai Hari Ini (Rp 30.000)</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Metode Pembayaran -->
+                        <div class="bg-white p-6 sm:p-8 rounded-4xl border border-pink-100 shadow-sm space-y-4">
+                            <div class="flex items-center gap-3 border-b border-pink-50 pb-4">
+                                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 font-heading font-bold flex items-center justify-center text-sm">
+                                    3
+                                </div>
+                                <div>
+                                    <h3 class="font-heading font-bold text-lg text-teen-dark">Metode Pembayaran</h3>
+                                    <p class="text-xs text-teen-muted">Pilih cara pembayaran paling praktis buat kamu</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 pt-2">
+                                <label class="p-4 rounded-2xl border border-pink-100 hover:border-teen-coral flex items-center justify-between cursor-pointer bg-white hover:bg-pink-50/30 transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="radio" name="payment-method" value="QRIS" checked class="accent-teen-coral">
+                                        <div>
+                                            <div class="font-bold text-xs text-teen-dark">QRIS (GoPay, OVO, ShopeePay, Dana, LinkAja, Mobile Banking)</div>
+                                            <div class="text-[10px] text-teen-muted">Scan cepat tanpa biaya admin</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg">📱</span>
+                                </label>
+
+                                <label class="p-4 rounded-2xl border border-pink-100 hover:border-teen-coral flex items-center justify-between cursor-pointer bg-white hover:bg-pink-50/30 transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="radio" name="payment-method" value="Virtual Account" class="accent-teen-coral">
+                                        <div>
+                                            <div class="font-bold text-xs text-teen-dark">Virtual Account / Transfer Bank</div>
+                                            <div class="text-[10px] text-teen-muted">BCA, Mandiri, BRI, BNI (Otomatis Terverifikasi)</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg">🏦</span>
+                                </label>
+
+                                <label class="p-4 rounded-2xl border border-pink-100 hover:border-teen-coral flex items-center justify-between cursor-pointer bg-white hover:bg-pink-50/30 transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="radio" name="payment-method" value="COD" class="accent-teen-coral">
+                                        <div>
+                                            <div class="font-bold text-xs text-teen-dark">COD (Bayar Pas Barang Sampai)</div>
+                                            <div class="text-[10px] text-teen-muted">Siapkan uang pas ke kurir saat menerima paket</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg">📦</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Order Summary Card -->
+                    <div class="lg:col-span-5 sticky top-24">
+                        <div class="bg-white p-6 sm:p-8 rounded-4xl border-2 border-pink-200 shadow-xl space-y-6">
+                            
+                            <h3 class="font-heading font-bold text-xl text-teen-dark flex items-center justify-between">
+                                <span>Ringkasan Pesanan</span>
+                                <span class="text-xs font-normal text-teen-coral bg-pink-50 px-3 py-1 rounded-full">✨ Sparkle Guarantee</span>
+                            </h3>
+
+                            <!-- Items List -->
+                            <div id="checkout-items-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+
+                            <!-- Voucher / Promo Code Box -->
+                            <div class="pt-2">
+                                <label class="block text-xs font-bold text-teen-dark mb-1">Kode Voucher / Promo</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="voucher-input" placeholder="Contoh: BLOOM10" class="uppercase flex-1 px-4 py-2.5 rounded-xl bg-teen-cream/60 border border-pink-100 text-xs font-bold text-teen-dark focus:outline-none focus:border-teen-coral">
+                                    <button type="button" onclick="applyVoucher()" class="px-4 py-2.5 rounded-xl bg-teen-dark hover:bg-black text-white font-bold text-xs transition">
+                                        Gunakan
+                                    </button>
+                                </div>
+                                <p id="voucher-msg" class="text-[11px] font-semibold mt-1 hidden"></p>
+                            </div>
+
+                            <!-- Calculations -->
+                            <div class="border-t border-pink-100 pt-4 space-y-2 text-xs">
+                                <div class="flex justify-between text-teen-muted">
+                                    <span>Subtotal Produk</span>
+                                    <span id="co-subtotal" class="font-bold text-teen-dark">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between text-teen-muted">
+                                    <span>Ongkos Kirim</span>
+                                    <span id="co-shipping" class="font-bold text-teen-dark">Rp 10.000</span>
+                                </div>
+                                <div id="co-discount-row" class="flex justify-between text-emerald-600 hidden">
+                                    <span>Diskon Promo</span>
+                                    <span id="co-discount" class="font-bold">-Rp 0</span>
+                                </div>
+                                <div class="border-t border-dashed border-pink-200 pt-3 flex justify-between items-center text-sm font-bold text-teen-dark">
+                                    <span>Total Bayar:</span>
+                                    <span id="co-grand-total" class="text-xl font-heading text-teen-coral">Rp 0</span>
+                                </div>
+                            </div>
+
+                            <!-- Guarantee Badges -->
+                            <div class="bg-teen-pink-soft/50 p-4 rounded-2xl flex items-center gap-3 text-xs text-teen-muted">
+                                <span class="text-2xl">🛡️</span>
+                                <div>
+                                    <div class="font-bold text-teen-dark">100% Original & BPOM Safe</div>
+                                    <div>Garansi uang kembali jika paket rusak/cacat.</div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Order Button -->
+                            <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-teen-coral via-pink-500 to-teen-lavender-dark text-white font-heading font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all">
+                                💖 KONFIRMASI & BAYAR SEKARANG
+                            </button>
+
+                            <p class="text-[11px] text-center text-teen-muted">
+                                Dengan memesan, kamu menyetujui <a href="#" class="underline">Syarat & Ketentuan</a> BloomTeen.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ORDER SUCCESS MODAL -->
+    <div id="order-success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-5xl p-6 sm:p-10 max-w-lg w-full shadow-2xl z-10 border-4 border-white text-center space-y-5 animate-bounce-short">
+            
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-emerald-400 to-teal-300 text-white text-4xl flex items-center justify-center mx-auto shadow-lg">
+                🎉
+            </div>
+
+            <div>
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wider">
+                    Pesanan Berhasil Dibuat!
+                </span>
+                <h3 class="font-heading font-bold text-2xl text-teen-dark mt-2">Terima Kasih, <span id="success-cust-name">Bestie</span>! 💖</h3>
+                <p class="text-xs text-teen-muted mt-1">ID Pesanan: <span id="success-order-id" class="font-mono font-bold text-teen-coral">#BT-98214</span></p>
+            </div>
+
+            <div class="p-4 rounded-3xl bg-teen-cream/80 text-left text-xs space-y-2 border border-pink-100">
+                <div class="flex justify-between border-b border-pink-100 pb-2 font-bold text-teen-dark">
+                    <span>Ringkasan Rincian:</span>
+                    <span id="success-payment-method" class="text-teen-coral">QRIS</span>
+                </div>
+                <div class="flex justify-between text-teen-muted">
+                    <span>Dikirim ke:</span>
+                    <span id="success-cust-city" class="font-semibold text-teen-dark">Jakarta</span>
+                </div>
+                <div class="flex justify-between text-teen-muted">
+                    <span>Total Tagihan:</span>
+                    <span id="success-grand-total" class="font-bold text-emerald-600 text-sm">Rp 0</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-teen-muted leading-relaxed">
+                Klik tombol di bawah untuk kirim bukti pesanan via <strong>WhatsApp Customer Service BloomTeen</strong> agar pesananmu langsung diproses & dikemas! ✨
+            </p>
+
+            <div class="space-y-3 pt-2">
+                <a id="wa-confirm-btn" href="#" target="_blank" class="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Konfirmasi via WhatsApp Sekarang</span>
+                </a>
+
+                <button onclick="closeOrderSuccess()" class="w-full py-3 rounded-2xl bg-teen-cream hover:bg-pink-100 text-teen-dark font-bold text-xs transition">
+                    Kembali ke Halaman Utama
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INTERACTIVE QUIZ MODAL -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeQuizModal()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-5xl p-6 sm:p-8 max-w-lg w-full shadow-2xl z-10 border border-pink-100">
+            <button onclick="closeQuizModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-pink-50 text-teen-muted flex items-center justify-center hover:bg-pink-100">
+                ✕
+            </button>
+
+            <div id="quiz-content">
+                <div class="text-center mb-6">
+                    <span class="text-xs font-bold text-teen-coral bg-pink-50 px-3 py-1 rounded-full uppercase">✨ Quiz Skin Check</span>
+                    <h3 class="font-heading font-bold text-2xl text-teen-dark mt-2">Cek Kebutuhan Kulitmu 💕</h3>
+                    <p class="text-xs text-teen-muted mt-1">Jawab 2 pertanyaan singkat ini untuk rekomendasi simpel!</p>
+                </div>
+
+                <!-- Quiz Step 1 -->
+                <div id="quiz-step-1" class="space-y-3">
+                    <label class="block text-xs font-bold text-teen-dark mb-2">1. Apa keluhan utama kulit wajahmu saat ini?</label>
+                    <button onclick="selectQuizOption('Berminyak & Bruntusan')" class="w-full text-left p-3.5 rounded-2xl border border-pink-100 hover:border-teen-coral hover:bg-pink-50/50 text-xs font-semibold text-teen-dark flex justify-between items-center">
+                        <span>😣 Berminyak & gampang bruntusan</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectQuizOption('Kusam & Kering')" class="w-full text-left p-3.5 rounded-2xl border border-pink-100 hover:border-teen-coral hover:bg-pink-50/50 text-xs font-semibold text-teen-dark flex justify-between items-center">
+                        <span>😴 Kusam, lesu, & terasa kering</span>
+                        <span>➔</span>
+                    </button>
+                    <button onclick="selectQuizOption('Normal Sensitif')" class="w-full text-left p-3.5 rounded-2xl border border-pink-100 hover:border-teen-coral hover:bg-pink-50/50 text-xs font-semibold text-teen-dark flex justify-between items-center">
+                        <span>🌡️ Sensitif & pengen perawatan dasar aja</span>
+                        <span>➔</span>
+                    </button>
+                </div>
+
+                <!-- Quiz Result (Hidden by default) -->
+                <div id="quiz-result" class="hidden text-center space-y-4 py-4">
+                    <span class="text-4xl">🎉</span>
+                    <h4 class="font-heading font-bold text-xl text-teen-dark">Rekomendasi Rutinitas Kamu:</h4>
+                    <div id="quiz-result-box" class="p-4 rounded-3xl bg-teen-pink-soft text-xs text-teen-dark font-medium leading-relaxed">
+                        <!-- Result injected by JS -->
+                    </div>
+                    <button onclick="addToCart('Starter Glow Trio Bundle', 139000, '🎁'); closeQuizModal();" class="w-full py-3 rounded-2xl bg-teen-coral text-white font-bold text-xs shadow-md">
+                        🎁 Ambil Starter Bundle Rekomendasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden bg-teen-dark text-white px-5 py-3 rounded-2xl text-xs font-bold shadow-xl flex items-center gap-2">
+        <span id="toast-msg">Produk berhasil ditambahkan!</span>
+    </div>
+
+    <script>
+        // Shopping Cart State
+        let cart = [];
+
+        function addToCart(title, price, emoji) {
+            const existing = cart.find(item => item.title === title);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ title, price, emoji, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`" ${title} " ditambahkan ke bag! 🛍️`);
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const itemsEl = document.getElementById('cart-items');
+            const footerEl = document.getElementById('cart-footer');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            countEl.innerText = totalQty;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = `
+                    <div class="text-center py-12 text-teen-muted">
+                        <span class="text-4xl block mb-2">🛍️</span>
+                        <p class="text-sm font-medium">Keranjang kamu masih kosong.</p>
+                        <p class="text-xs text-gray-400 mt-1">Pilih produk favoritmu sekarang!</p>
+                    </div>
+                `;
+                footerEl.classList.add('hidden');
+            } else {
+                itemsEl.innerHTML = cart.map((item, index) => `
+                    <div class="flex items-center justify-between p-3 rounded-2xl bg-teen-cream/50 border border-pink-100">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">${item.emoji}</span>
+                            <div>
+                                <h4 class="font-heading font-bold text-xs text-teen-dark">${item.title}</h4>
+                                <span class="text-[11px] text-teen-coral font-bold">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty}</span>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-xs text-red-400 font-bold px-2 py-1">
+                            Hapus
+                        </button>
+                    </div>
+                `).join('');
+                
+                totalEl.innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+                footerEl.classList.remove('hidden');
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function checkoutSimulation() {
+            showToast("✨ Mengalihkan ke halaman checkout... Terima kasih!");
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+                toggleCartDrawer();
+            }, 1500);
+        }
+
+        // CHECKOUT PAGE LOGIC & STATE
+        let appliedDiscount = 0;
+
+        function openCheckoutPage() {
+            if (cart.length === 0) {
+                showToast("⚠️ Keranjang belanjaanmu masih kosong!");
+                return;
+            }
+            toggleCartDrawer(); // Close drawer if open
+            document.getElementById('checkout-page').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderCheckoutSummary();
+        }
+
+        function closeCheckoutPage() {
+            document.getElementById('checkout-page').classList.add('hidden');
+        }
+
+        function renderCheckoutSummary() {
+            const listEl = document.getElementById('checkout-items-list');
+            
+            listEl.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between p-3 rounded-2xl bg-teen-pink-soft/40 border border-pink-100 text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">${item.emoji}</span>
+                        <div>
+                            <div class="font-heading font-bold text-teen-dark">${item.title}</div>
+                            <div class="text-teen-muted">Jumlah: ${item.qty} pcs</div>
+                        </div>
+                    </div>
+                    <div class="font-bold text-teen-coral">
+                        Rp ${(item.price * item.qty).toLocaleString('id-ID')}
+                    </div>
+                </div>
+            `).join('');
+
+            updateCheckoutTotals();
+        }
+
+        function updateCheckoutTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
+            // Get selected shipping fee
+            const shippingRadios = document.getElementsByName('shipping-option');
+            let shippingFee = 10000;
+            for (const radio of shippingRadios) {
+                if (radio.checked) {
+                    shippingFee = parseInt(radio.value);
+                    break;
+                }
+            }
+
+            const grandTotal = Math.max(0, subtotal + shippingFee - appliedDiscount);
+
+            document.getElementById('co-subtotal').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('co-shipping').innerText = `Rp ${shippingFee.toLocaleString('id-ID')}`;
+            document.getElementById('co-grand-total').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+
+            if (appliedDiscount > 0) {
+                document.getElementById('co-discount-row').classList.remove('hidden');
+                document.getElementById('co-discount').innerText = `-Rp ${appliedDiscount.toLocaleString('id-ID')}`;
+            } else {
+                document.getElementById('co-discount-row').classList.add('hidden');
+            }
+        }
+
+        function applyVoucher() {
+            const input = document.getElementById('voucher-input').value.trim().toUpperCase();
+            const msgEl = document.getElementById('voucher-msg');
+
+            if (input === 'BLOOM10' || input === 'BLOOMTEEN') {
+                appliedDiscount = 15000;
+                msgEl.innerText = "✨ Kode voucher berhasil! Diskon Rp 15.000";
+                msgEl.className = "text-[11px] font-semibold mt-1 text-emerald-600 block";
+                showToast("🎉 Diskon Rp 15.000 telah dipasang!");
+            } else if (input === '') {
+                msgEl.innerText = "Masukkan kode voucher terlebih dahulu.";
+                msgEl.className = "text-[11px] font-semibold mt-1 text-red-400 block";
+            } else {
+                appliedDiscount = 0;
+                msgEl.innerText = "⚠️ Kode voucher tidak valid atau sudah kadaluwarsa.";
+                msgEl.className = "text-[11px] font-semibold mt-1 text-red-400 block";
+            }
+            updateCheckoutTotals();
+        }
+
+        function processCheckout(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const city = document.getElementById('cust-city').value;
+            const address = document.getElementById('cust-address').value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shippingRadios = document.getElementsByName('shipping-option');
+            let shippingFee = 10000;
+            for (const radio of shippingRadios) {
+                if (radio.checked) {
+                    shippingFee = parseInt(radio.value);
+                    break;
+                }
+            }
+            const grandTotal = Math.max(0, subtotal + shippingFee - appliedDiscount);
+            const orderId = `BT-${Math.floor(10000 + Math.random() * 90000)}`;
+
+            // Update Success Modal details
+            document.getElementById('success-cust-name').innerText = name;
+            document.getElementById('success-order-id').innerText = `#${orderId}`;
+            document.getElementById('success-payment-method').innerText = paymentMethod;
+            document.getElementById('success-cust-city').innerText = city;
+            document.getElementById('success-grand-total').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+
+            // Format WhatsApp Message
+            let itemsSummary = cart.map(i => `- ${i.title} (${i.qty}x)`).join('%0A');
+            let waText = `Halo CS BloomTeen! ✨%0ASaya mau konfirmasi pesanan berikut:%0A%0A*ID Pesanan:* ${orderId}%0A*Nama:* ${name}%0A*No WA:* ${phone}%0A*Alamat:* ${address}, ${city}%0A%0A*Pesanan:*%0A${itemsSummary}%0A%0A*Metode Pembayaran:* ${paymentMethod}%0A*Total Pembayaran:* Rp ${grandTotal.toLocaleString('id-ID')}%0A%0AMohon diproses ya, terima kasih! 🌸`;
+
+            document.getElementById('wa-confirm-btn').href = `https://wa.me/6281381803544?text=${waText}`;
+
+            // Show Success Modal
+            closeCheckoutPage();
+            document.getElementById('order-success-modal').classList.remove('hidden');
+
+            // Reset Cart & Form
+            cart = [];
+            appliedDiscount = 0;
+            document.getElementById('voucher-input').value = '';
+            document.getElementById('voucher-msg').classList.add('hidden');
+            updateCartUI();
+        }
+
+        function closeOrderSuccess() {
+            document.getElementById('order-success-modal').classList.add('hidden');
+        }
+
+        // Accordion FAQ Toggle
+        function toggleFaq(id) {
+            const target = document.getElementById(id);
+            const icon = document.getElementById(`${id}-icon`);
+            
+            if (target.classList.contains('hidden')) {
+                target.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                target.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Quiz Logic
+        function openQuizModal() {
+            document.getElementById('quiz-modal').classList.remove('hidden');
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quiz-modal').classList.add('hidden');
+        }
+
+        function selectQuizOption(type) {
+            document.getElementById('quiz-step-1').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result-box');
+            
+            resultBox.innerHTML = `
+                <p class="font-bold text-teen-coral mb-1">Rekomendasi untuk tipe: ${type}</p>
+                <p>Kamu sangat cocok pakai <strong>Starter Glow Trio Set</strong> (Cleanser + Hydrating Serum + Sunscreen). Formula calming-nya pas banget untuk menjaga pH kulit tetap stabil tanpa efek berat!</p>
+            `;
+            
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+
+        // Toast Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
